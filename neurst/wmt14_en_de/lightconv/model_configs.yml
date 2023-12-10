@@ -1,0 +1,78 @@
+enable_quant: false
+model.class: LightConvolutionModel
+model.params:
+  decoder.attention_dropout_rate: 0.1
+  decoder.attention_type: dot_product
+  decoder.class: null
+  decoder.conv_hidden_size: 256
+  decoder.conv_kernel_size_list:
+  - 3
+  - 7
+  - 15
+  - 15
+  - 15
+  decoder.conv_type: lightweight
+  decoder.conv_weight_dropout_rate: 0.1
+  decoder.ffn_activation: relu
+  decoder.ffn_dropout_rate: 0.1
+  decoder.filter_size: 1024
+  decoder.glu_after_proj: true
+  decoder.layer_postprocess_dropout_rate: 0.1
+  decoder.layer_postprocess_epsilon: 1.0e-06
+  decoder.num_attention_heads: 4
+  decoder.num_conv_heads: 4
+  decoder.num_layers: 5
+  decoder.params: {}
+  encoder.class: null
+  encoder.conv_hidden_size: 256
+  encoder.conv_kernel_size_list:
+  - 3
+  - 7
+  - 15
+  - 15
+  - 15
+  encoder.conv_type: lightweight
+  encoder.conv_weight_dropout_rate: 0.1
+  encoder.ffn_activation: relu
+  encoder.ffn_dropout_rate: 0.1
+  encoder.filter_size: 1024
+  encoder.glu_after_proj: true
+  encoder.layer_postprocess_dropout_rate: 0.1
+  encoder.layer_postprocess_epsilon: 1.0e-06
+  encoder.num_conv_heads: 4
+  encoder.num_layers: 5
+  encoder.params: {}
+  modality.dim: 256
+  modality.share_embedding_and_softmax_weights: true
+  modality.share_source_target_embedding: false
+  modality.source.dim: null
+  modality.source.timing: null
+  modality.target.dim: null
+  modality.target.timing: null
+  modality.timing: sinusoids
+quant_params:
+  quant_act_clip_max: null
+  quant_bits: null
+  quant_strategy: null
+  quant_weight_clip_max: null
+task.class: Translation
+task.params:
+  src_data_pipeline.class: TextDataPipeline
+  src_data_pipeline.params:
+    glossaries: null
+    language: en
+    reverse_sequence: false
+    subtokenizer: bpe
+    subtokenizer_codes: /root/neurst/wmt14_en_de/codes.bpe
+    tokenizer: moses
+    vocab_path: /root/neurst/wmt14_en_de/vocab.en
+  target_begin_of_sentence: bos
+  trg_data_pipeline.class: TextDataPipeline
+  trg_data_pipeline.params:
+    glossaries: null
+    language: de
+    reverse_sequence: false
+    subtokenizer: bpe
+    subtokenizer_codes: /root/neurst/wmt14_en_de/codes.bpe
+    tokenizer: moses
+    vocab_path: /root/neurst/wmt14_en_de/vocab.de

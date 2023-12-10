@@ -1,0 +1,27 @@
+transformer  100000steps-bleu18.30
+
+dmodel = 256
+num_heads = 4
+num_encoder_layers = 6
+num_decoder_layers = 6
+num_encoder_filter_size = 1024
+num_decoder_filter_size = 1024
+dropout_rate = 0.1
+
+
+lightweight_conv  100000steps-bleu18.45
+
+dmodel=256, num_heads=4, filter_size=1024,
+encoder_layers=5, encoder_kernels=[3, 7, 15, 15, 15],
+decoder_layers=5, decoder_kernels=[3, 7, 15, 15, 15],
+encoder_conv_type="lightweight", decoder_conv_type="lightweight",
+attention_dropout=0.1, weight_dropout=0.1, dropout=0.1)
+
+
+dynamic_conv  100000steps-bleu18.42
+
+dmodel=256, num_heads=4, filter_size=1024,
+encoder_layers=5, encoder_kernels=[3, 7, 15, 15, 15],
+decoder_layers=5, decoder_kernels=[3, 7, 15, 15, 15],
+encoder_conv_type="dynamic", decoder_conv_type="dynamic",
+attention_dropout=0.1, weight_dropout=0.1, dropout=0.1)

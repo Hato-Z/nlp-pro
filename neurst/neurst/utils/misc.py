@@ -23,6 +23,8 @@ import numpy
 import tensorflow as tf
 from absl import logging
 
+import urllib
+import random
 
 def deprecated(substitution):
     """This is a decorator which can be used to mark functions or classes
@@ -192,6 +194,11 @@ def download_with_tqdm(url, filename):
 
     with TqdmUpTo(unit="B", unit_scale=True, unit_divisor=1024,
                   miniters=1, desc=filename) as t:
+        # res=requests.get(url)
+        # with open('/root/neurst/wmt14_en_de/','wb') as f:
+        #     f.write(res.content)
+
+        # 链接因为反爬虫不能下载，暂时手动下载
         urlretrieve(url, filename, reporthook=t.update_to, data=None)
 
 

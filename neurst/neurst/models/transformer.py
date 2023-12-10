@@ -154,8 +154,8 @@ class Transformer(EncoderDecoderModel):
         elif name == "transformer_s":
             dmodel = 256
             num_heads = 4
-            num_encoder_layers = 6
-            num_decoder_layers = 6
+            num_encoder_layers = 3
+            num_decoder_layers = 3
             num_encoder_filter_size = 2048
             num_decoder_filter_size = 2048
             dropout_rate = 0.1
@@ -235,7 +235,7 @@ class Transformer(EncoderDecoderModel):
             "lr_schedule.params": {
                 "initial_factor": 1.0,
                 "dmodel": dmodel,
-                "warmup_steps": 4000
+                "warmup_steps": 3000
             },
         }
 

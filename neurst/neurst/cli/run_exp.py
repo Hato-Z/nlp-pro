@@ -120,6 +120,9 @@ def _main(_):
 
 def cli_main():
     logging.set_verbosity(logging.INFO)
+    
+    # 保存log信息到文件
+    logging.get_absl_handler().use_absl_log_file('absl_logging', './log/')
     app.run(_main, argv=["pseudo.py"])
 
 

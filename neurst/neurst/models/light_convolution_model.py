@@ -256,3 +256,26 @@ def dynamic_conv_toy():
         decoder_layers=2, decoder_kernels=[3, 5],
         encoder_conv_type="dynamic", decoder_conv_type="dynamic",
         attention_dropout=0.1, weight_dropout=0.1, dropout=0.1)
+
+
+# 实验用的小型模型
+
+@register_hparams_set("lightweight_conv_test")
+def lightweight_conv_test():
+    return _common_hparams(
+        dmodel=256, num_heads=4, filter_size=1024,
+        encoder_layers=5, encoder_kernels=[3, 7, 15, 15, 15],
+        decoder_layers=5, decoder_kernels=[3, 7, 15, 15, 15],
+        encoder_conv_type="lightweight", decoder_conv_type="lightweight",
+        attention_dropout=0.1, weight_dropout=0.1, dropout=0.1)
+
+
+@register_hparams_set("dynamic_conv_test")
+def dynamic_conv_test():
+    return _common_hparams(
+        dmodel=256, num_heads=4, filter_size=1024,
+        encoder_layers=5, encoder_kernels=[3, 7, 15, 15, 15],
+        decoder_layers=5, decoder_kernels=[3, 7, 15, 15, 15],
+        encoder_conv_type="dynamic", decoder_conv_type="dynamic",
+        attention_dropout=0.1, weight_dropout=0.1, dropout=0.1)
+
